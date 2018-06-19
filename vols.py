@@ -1,13 +1,6 @@
-def foo(mass, ind):
-    if ind >= len(mass) - 2:
-        return None
-    else:
-        return mass[ind+1] - mass[ind]
-
-
 def bar(vols, speeds):
     vols_ = [0]
-    for vol1, vol2 in zip(vols, vols[1:]):
+    for vol1, vol2 in zip(vols, vols[1:]): # becouse volume's step can be less than first value 
         vols_.append(vol1 + (vol2 - vol1) / 2)
         
     times = [0]
@@ -15,14 +8,3 @@ def bar(vols, speeds):
         times.append(times[-1] + (vol2 - vol1) / speed)
 
     return vols_, times
-
-
-def test():
-    vols = [i * 20 + 30 for i in range(10)]
-    speeds = [1] * 10
-    v, t = bar(vols, speeds)
-    print(vols)
-    print(v)
-    print(t)
-    
-test()
